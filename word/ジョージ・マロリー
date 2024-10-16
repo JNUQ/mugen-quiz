@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョージ・マロリー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>ジョージ・マロリー</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="history.html">歴史</a></li>
+                <li><a href="science.html">科学</a></li>
+                <li><a href="technology.html">技術</a></li>
+                <li><a href="art.html">芸術</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <article>
+            <p>
+イギリスの登山家。ニューヨーク・タイムズの記事で「Why did you want to climb Mt. Everest?(なぜ山に登るのか？)」と聞かれて「Because it's there.(そこに山があるからだ。)」と答えた逸話で知られる。1924年にアンドリュー・アーヴィンとともにエベレスト登頂に挑んで消息を絶った。            
+</p>
+
+            <p><a href="science.html">← 科学のカテゴリに戻る</a></p>
+        </article>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Encyclopedia. All rights reserved.</p>
+        <p><a href="contact.html">お問い合わせ</a> | <a href="privacy.html">プライバシーポリシー</a></p>
+    </footer>
+</body>
+</html>
