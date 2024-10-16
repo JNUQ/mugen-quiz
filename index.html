@@ -14,23 +14,26 @@
 
     <nav>
         <ul>
+            <li><a href="index.html">ホーム</a></li>
             <li><a href="history.html">歴史</a></li>
             <li><a href="science.html">科学</a></li>
-            <li><a href="culture.html">文化</a></li>
             <li><a href="technology.html">技術</a></li>
             <li><a href="art.html">芸術</a></li>
         </ul>
     </nav>
 
+    <input type="text" id="search" placeholder="検索..." onkeyup="searchFunction()">
+
     <section>
         <h2>最近追加された記事</h2>
         <article>
-            <h3><a href="recent_article_1.html">記事タイトル1</a></h3>
-            <p>記事の概要がここに入ります。訪問者が興味を持つ短い要約を提供します。</p>
+            <h3><a href="quantum_computing.html">量子コンピュータとは？</a></h3>
+            <p>量子コンピュータは、従来のコンピュータとは異なる原理で動作する新しいタイプのコンピュータです。従来のコンピュータがビット（0と1）を使って情報を処理するのに対し、量子コンピュータは「量子ビット」（キュービット）を使います。このキュービットは、0と1の両方の状態を同時にとることができるため、膨大な計算を並行して行うことが可能です。
+            </p>
         </article>
         <article>
             <h3><a href="recent_article_2.html">記事タイトル2</a></h3>
-            <p>記事の概要がここに入ります。訪問者が興味を持つ短い要約を提供します。</p>
+            <p>この記事はサンプルです。内容はここに入ります。</p>
         </article>
     </section>
 
@@ -38,5 +41,24 @@
         <p>&copy; 2024 My Encyclopedia. All rights reserved.</p>
         <p><a href="contact.html">お問い合わせ</a> | <a href="privacy.html">プライバシーポリシー</a></p>
     </footer>
+
+    <script>
+        function searchFunction() {
+            var input = document.getElementById('search');
+            var filter = input.value.toLowerCase();
+            var articles = document.querySelectorAll('article');
+
+            articles.forEach(function(article) {
+                var title = article.querySelector('h3').textContent.toLowerCase();
+                var content = article.textContent.toLowerCase();
+
+                if (title.includes(filter) || content.includes(filter)) {
+                    article.style.display = ''; 
+                } else {
+                    article.style.display = 'none'; 
+                }
+            });
+        }
+    </script>
 </body>
 </html>
