@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+</head>
+<body>
+    <h1>Search the Site</h1>
+    <input type="text" id="search" placeholder="Type to search...">
+    <ul id="results"></ul>
+
+    <script>
+        // サイトのページ情報を取得
+        var idx;
+        fetch('/search.json')
+        .then(response => response.json())
+        .then(data => {
+            idx = lunr(function () {
+                this.field('title')
+                this.field('content')
+                this.ref('url')
+
+                data.forEach(function (doc) {
+                    this.add(doc)
+                }, this)
+            });
+        });
+
+        // 検索ボックスのイベント
+        document.getElementById('search').addEventListener('input', function () {
+            var query = this.value;
+            if (!idx) return;
+
+            var results = idx.search(query);
+            var resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            results.forEach(function (result) {
+                var li = document.createElement('li');
+                var a = document.createElement('a');
+                a.href = result.ref;
+                a.textContent = result.ref;
+                li.appendChild(a);
+                resultsContainer.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
