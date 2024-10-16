@@ -37,6 +37,11 @@
         </article>
     </section>
 
+    <section id="searchResults" style="display:none;">
+        <h2>検索結果</h2>
+        <div id="resultsContainer"></div>
+    </section>
+
     <footer>
         <p>&copy; 2024 My Encyclopedia. All rights reserved.</p>
         <p><a href="contact.html">お問い合わせ</a> | <a href="privacy.html">プライバシーポリシー</a></p>
@@ -47,17 +52,31 @@
             var input = document.getElementById('search');
             var filter = input.value.toLowerCase();
             var articles = document.querySelectorAll('article');
+            var resultsContainer = document.getElementById('resultsContainer');
+            var searchResults = [];
+
+            resultsContainer.innerHTML = '';
 
             articles.forEach(function(article) {
                 var title = article.querySelector('h3').textContent.toLowerCase();
                 var content = article.textContent.toLowerCase();
 
                 if (title.includes(filter) || content.includes(filter)) {
-                    article.style.display = ''; 
+                    article.style.display = ''; // 一致したら表示
+                    searchResults.push(article.innerHTML); // 検索結果に追加
                 } else {
-                    article.style.display = 'none'; 
+                    article.style.display = 'none'; // 一致しなければ非表示
                 }
             });
+
+            if (searchResults.length > 0) {
+                document.getElementById('searchResults').style.display = 'block';
+                searchResults.forEach(function(result) {
+                    resultsContainer.innerHTML += `<article>${result}</article>`;
+                });
+            } else {
+                document.getElementById('searchResults').style.display = 'none'; // 結果がない場合は非表示
+            }
         }
     </script>
 </body>
